@@ -1,0 +1,41 @@
+con_id,con_name,party_1,party_2,party_3,party_4,party_5,mp_1,mp_2,mp_3,mp_4,mp_5,percentage_1,percentage_2,percentage_3,percentage_4,percentage_5
+10001C,Carlow-Kilkenny,FF,FF,SF,FG,FG,"McGuinness, John","Aylward, Bobby","Funchion, Kathleen","Phelan, John Paul","Deering, Pat",15.04,13.38,12.43,10.81,9.37
+20001C,Cavan-Monaghan,FG,SF,FF,FF,,"Humphreys, Heather","Ó Caoláin, Caoimhghín","Smith, Brendan","Smyth, Niamh",,20.77,16.87,14.71,10.51,
+30001C,Clare,"FF",IO,FG,FG,,"Dooley, Timmy","Harty, Michael","Breen, Pat","Carey, Joe",,17.92,15.14,11.55,10.65,
+40001C,Cork East,FF,FG,LAB,SF,,"O'Keeffe, Kevin","Stanton, David","Sherlock, Seán","Buckley, Pat",,15.65,13.58,13.16,10.15,
+40002C,Cork North-Central,FF,SP,SF,FG,,"Kelleher, Billy","Barry, Mick","O'Brien, Jonathan","Murphy, Dara",,27.92,15.71,12.18,10.29,
+40004C,Cork North-West,FF,FG,FF,,,"Moynihan, Aindrias","Creed, Michael","Moynihan, Michael",,,19,18.89,15.61,,
+40003C,Cork South-Central,FF,FF,FG,SF,,"McGrath, Michael","Martin, Micheál","Coveney, Simon","Ó Laoghaire, Donnchadh",,21.18,20.38,14.3,12.55,
+40005C,Cork South-West,FF,FG,IO,,,"Murphy O'Mahony, Margaret","Daly, Jim","Collins, Michael",,,19.61,17.04,15.64,,
+50001C,Donegal,FF,SF,FF,FG,IO,"McConalogue, Charlie","Doherty, Pearse","Gallagher, Pat the Cope","McHugh, Joe","Pringle, Thomas",17.1,14.05,13.91,11.48,8.49
+260004C,Dublin Bay North,FG,FF,IO,IO,SF,"Bruton, Richard","Haughey, Sean","McGrath, Finian","Broughan, Tommy","Mitchell, Denise",13.3,10.88,7.98,7.28,6.84
+260008C,Dublin Bay South,FG,FG,FF,GP,,"Murphy, Eoghan","O'Connell, Kate","O'Callaghan, Jim","Ryan, Eamon",,16.54,13.6,11.52,11.41,
+260005C,Dublin Central,SF,FG,IO,,,"McDonald, Mary Lou","Donohoe, Paschal","O'Sullivan, Maureen",,,24.36,13.62,8.4,,
+260001C,Dublin Fingal,FF,"Daly, Clare",FG,LAB,SF,"O'Brien, Darragh","Daly, Clare","Farrell, Alan","Ryan, Brendan","O'Reilly, Louise",17.93,15.7,12.44,9.95,8.66
+260006C,Dublin Mid-West,SF,FG,FF,PBP,,"Ó Broin, Eoin","Fitzgerald, Frances","Curran, John","Kenny, Gino",,22.69,20.94,16.17,10.74,
+260003C,Dublin North-West,SD,SF,FG,,,"Shortall, Roisin","Ellis, Dessie","Rock, Noel",,,28.48,20.46,12.54,,
+2600010C,Dublin Rathdown,IO,FG,GP,,,"Ross, Shane","Madigan, Josepha","Martin, Catherine",,,24.82,16.22,10.03,,
+260007C,Dublin South-Central,SF,IO,FG,PBP,,"Ó Snodaigh, Aengus","Collins, Joan","Byrne, Catherine","Smith, Bríd",,15.49,14.46,14.3,10.21,
+260009C,Dublin South-West,FF,SP,FG,SF,IO,"Lahart, John","Murphy, Paul","Brophy, Colm","Crowe, Seán","Zappone, Katherine",14.34,13.39,10.7,10.37,6.63
+260002C,Dublin West,FG,FF,SP,LAB,,"Varadkar, Leo","Chambers, Jack","Coppinger, Ruth","Burton, Joan",,19.66,16.49,15.54,15.36,
+2600011C,Dún Laoghaire,FG,FG,"FG",PBP,,"Barrett, Seán","Mitchell-O'Connor, Mary","Bailey, Maria","Boyd-Barrett, Richard",,CC,18.26,17.71,16.5,
+60002C,Galway East,IO,FG,FF,,,"Canney, Seán","Cannon, Ciarán","Rabbitte, Anne",,,18.67,15.75,15.31,,
+60001C,Galway West,FF,IO,FG,IO,FG,"O'Cuiv, Eamon","Grealish, Noel","Kyne, Seán","Connolly, Catherine","Naughton, Hildegarde",14.84,11.18,9.55,7.59,7.11
+70001C,Kerry,IO,IO,FG,SF,FF,"Healy Rae, Michael","Healy Rae, Danny","Griffin, Brendan","Ferris, Martin","Brassill, John",25.71,12.6,12.2,11.93,10.29
+80001C,Kildare North,SD,FF,FF,FG,,"Murphy, Catherine","Lawless, James","O'Rourke, Frank","Durkan, Bernard",,22.7,15.25,12.96,12.56,
+80002C,Kildare South,FG,FF,FF,,,"Heydon, Martin","O'Loughlin, Fiona","Ó'Fearghaíl, Seán",,,21.34,18.77,17.59,,
+100001C,Laois,FF,FG,SF,,,"Fleming, Sean","Flanagan, Charles","Stanley, Brian",,,35.06,21.53,21.21,,
+120001C,Limerick,FF,FG,FG,,,"Collins, Niall","O'Donovan, Patrick","Neville, Tom",,,27.64,19.09,18.04,,
+120002C,Limerick City,FF,FG,SF,LAB,,"O'Dea, Willie","Noonan, Michael","Quinlivan, Maurice","O'Sullivan, Jan",,27.8,15.6,12.6,11.18,
+130001C,Longford-Westmeath,FF,IO,FG,LAB,,"Troy, Robert","Moran, Kevin Boxer","Burke, Peter","Penrose, Willie",,21.09,13.73,10.28,8.72,
+140001C,Louth,SF,FF,"SF",FG,FG,"Adams, Gerry","Breathnach, Declan","Munster, Imelda","O'Dowd, Fergus","Fitzpatrick, Peter",15.79,13.47,13.07,10.09,9.49
+150001C,Mayo,FG,FG,FF,FF,,"Kenny, Enda","Ring, Michael","Calleary, Dara","Chambers, Lisa",,20.93,17.72,14.77,12.93,
+160001C,Meath East,FF,FG,FG,,,"Byrne, Thomas","McEntee, Helen","Doherty, Regina",,,26.14,18.26,16.5,,
+160002C,Meath West,FF,SF,FG,,,"Cassells, Shane","Tóibín, Peadar","English, Damien",,,27.42,24.46,21.04,,
+180001C,Offaly,FF,FG,SF,,,"Cowen, Barry","Corcoran-Kennedy, Marcella","Nolan, Carol",,,28.08,15.53,10.91,,
+190001C,Roscommon-Galway,IO,IO,FF,,,"Naughten, Denis","Fitzmaurice, Michael","Murphy, Eugene",,,30.51,21.34,14.91,,
+200001C,Sligo-Leitrim,FF,SF,FG,FF,,"MacSharry, Marc","Kenny, Martin","McLoughlin, Tony","Scanlon, Eamon",,14.21,10.2,9.9,9.42,
+210001C,Tipperary,IO,IO,LAB,WUA,FF,"Lowry, Michael","McGrath, Mattie","Kelly, Alan","Healy, Seamus","Cahill, Jackie",16.76,14.42,9.94,9.56,9.51
+220001C,Waterford,FF,SF,IO,FG,,"Butler, Mary","Cullinane, David","Halligan, John","Deasy, John",,20.51,18.84,16.06,14.78,
+240001C,Wexford,LAB,FF,IO,FG,FG,"Howlin, Brendan","Browne, James","Wallace, Mick","D'Arcy, Michael","Kehoe, Paul",14.76,13.71,11.05,10.88,10.74
+250001C,Wicklow,SD,SF,FG,FF,FG,"Donnelly, Stephen","Brady, John","Harris, Simon","Casey, Pat","Doyle, Andrew",20.85,16.21,15.72,9.14,8.79

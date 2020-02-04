@@ -1,0 +1,198 @@
+@import "mq";
+@import "fonts";
+@import "palette";
+// Uncomment for embeds
+//@import "embed";
+// Uncomment for full screen (including immersive article main media)
+//@import "fullscreen";
+
+
+
+.element-atom,
+.interactive-atom, body {
+
+	margin: 0px !important;
+}
+
+.element-atom{
+	z-index:1000000;
+	//margin-left: 240px !important;
+	//margin: 0px !important;
+	background-color: white;
+	max-width: 860px;
+	background:white;
+
+}
+
+
+
+.gv-maps-wrapper{
+
+	border: 1px solid red;
+	display: flex;
+	width: 100%;
+
+	//align-items:center;
+
+	flex-direction: column;
+
+	@include mq(tablet){
+		flex-direction: row;
+		justify-content:space-between;
+	}
+
+	.gv-map-wrapper{
+
+		width: 100%;
+	}
+	
+
+	#gv-geographical{
+		display: flex;
+		min-width: 320px;
+		max-width: 320px;
+
+		border:1px solid red;
+	}
+
+	#gv-cartogram{
+		border:1px solid red;
+		display: flex;
+
+		min-width: 320px;
+
+		@include mq(mobile)
+		{
+			width: 100%;
+		}
+		@include mq(tablet)
+		{
+			width: 50%;
+		}
+		
+	}
+}
+
+.tooltip{
+	z-index:1000000;
+ 	pointer-events: none;
+ 	min-width:20%;
+ 	//height: max-content;
+ 	padding:12px;
+ 	font-size: 14px;
+ 	line-height: 16px;
+ 	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+ 	background: rgba(255, 255, 255, 0.9);
+ 	border: 1px solid #333;
+ 	
+
+ 	color: #333333;
+ 	//border-top: 1px solid #333;
+
+ 	opacity: 0;
+
+ 	display: flex;
+ 	flex-direction: column;
+
+ 	@include mq(mobile)
+ 	{
+ 		position: absolute;
+ 		width: calc(100% - 1.8em);
+ 		//bottom: 0%;
+ 		//left: 0%;
+ 	}
+ 	@include mq(tablet)
+ 	{
+ 		max-width: 200px;
+ 		position: absolute;
+ 		//position: relative;
+ 		//float: left;
+ 		//top: 0%;
+ 	}
+
+
+ 	&.over{
+ 		opacity: 1;
+ 	}
+
+
+ 	.tooltip-title{
+ 		font-size: 16px;
+ 		font-family: "Guardian Headline","Guardian Egyptian Web","Guardian Headline Full",Georgia,serif;
+ 		font-weight: bold;
+ 		color: #000;
+ 		font-weight: 800;
+ 		padding-bottom: 15px;
+ 		margin-bottom:5px;
+ 		line-height: 24px;
+ 		display: flex;
+ 		width: 100%;
+ 	}
+
+ 	.tooltip-row {
+ 		display: flex;
+ 		flex-direction: row;
+ 		flex: 1;
+ 		min-width: 0;
+
+ 		.tooltip-party{
+
+ 			white-space: nowrap;
+ 			overflow: hidden;
+ 			text-overflow: ellipsis;
+ 		}
+ 	}
+
+ 	.tooltip-row:not(:last-child){
+ 		margin-bottom: 5px;
+ 		border-bottom: 2px dotted #b3b3b3;
+ 		height:20px;
+ 	}
+
+ 	.tooltip-constituency, .tooltip-party{
+ 		flex: 100%;
+ 	}
+
+ 	#tooltip-color{
+		width: 8px;
+		height: 8px;
+		margin-right: 5px;
+		margin-top: 4px;
+	}
+ }
+
+
+
+
+ [class="FF"]{fill:#3db540; background-color: #3db540;}
+ [class="FG"]{fill:#00b2ff;  background-color: #00b2ff;}
+ [class="IO"]{fill:#999999;  background-color: #999999;}
+ [class="LAB"]{fill:#c70000;  background-color: #c70000;}
+ [class="SF"]{fill:#236925;  background-color: #236925;}
+ [class="GP"]{fill:#4B8878;  background-color: #4B8878;}
+ [class="Solidarity"]{fill:#ffe500;  background-color: #ffe500;}
+ [class="Others"]{fill:#cccccc;  background-color: #cccccc;}
+
+
+ .constituency{
+ 	fill:$neutral-96;
+ }
+
+ .geo-border{
+ 	stroke:$neutral-92;
+ }
+
+ .dublin-border{
+ 	fill:none;
+ 	stroke:$neutral-86;
+ 	stroke-width:2px;
+ }
+
+ .constituency-hex{
+ 	fill-opacity: 0;
+ 	stroke: white;
+ 	stroke-width: 2px;
+ }
+
+
+ 
