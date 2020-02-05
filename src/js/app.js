@@ -8,7 +8,7 @@ loadJson('https://interactive.guim.co.uk/docsdata-test/18lIPHjQVSoLRqRstoPkh60My
 
 
 	cartogram(fileRaw)
-	geographical(fileRaw)
+	//geographical(fileRaw)
 
 	window.resize();
 })

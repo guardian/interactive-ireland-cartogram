@@ -7,6 +7,8 @@ import constituenciesMap from '../assets/ireland-constituencies-hex.json'
 import dublinBorderMap from '../assets/dublin-border.json'
 import { $ } from "./util"
 
+import { highlightGeo, deleteGeoHighlight } from './geographical.js'
+
 const d3 = Object.assign({}, d3B, d3Select, geo);
 
 let results;
@@ -27,7 +29,15 @@ d3.select('.tooltip').style('width', width)
 
 let svg = d3.select('#gv-cartogram').append('svg')
 .attr('width', width)
-.attr('height', height)
+.attr('height', height);
+
+let seats = svg.append('g');
+
+let constituencies = svg.append('g');
+
+let dublin = svg.append('g');
+
+let highlightStrokes = svg.append('g');
 
 let tooltip = d3.select(".tooltip")
 
@@ -38,20 +48,13 @@ let path = d3.geoPath()
 
 projection.fitExtent([[0, 0], [width, height]], topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']));
 
-let seats = svg.append('g').selectAll('path')
+seats.selectAll('path')
 .data(topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']).features)
 .enter()
 .append("path")
 .attr("d", path)
 .attr("id", d => 's' + d.properties.con_id + '_' + d.properties.seat_id)
 .attr('fill', '#f6f6f6')
-
-let dublin = svg.append('path')
-.datum(topojson.feature(dublinBorderMap, dublinBorderMap.objects['dublin-border']))
-.attr("d", path)
-.attr('fill', 'none')
-.style('stroke', 'white')
-.style('stroke-width', 4 + 'px');
 
 
 export default (data) => {
@@ -74,7 +77,7 @@ export default (data) => {
 
 	})
 
-	let constituencies = svg.append('g').selectAll("path")
+	constituencies.selectAll("path")
 	.data(topojson.feature(constituenciesMap, constituenciesMap.objects['ireland-constituencies-hex']).features)
 	.enter()
 	.append('path')
@@ -82,13 +85,29 @@ export default (data) => {
 	.attr('class', 'constituency-hex')
 	.attr("d", path)
 	.on('mouseover', d => {
-		printResult(d.properties.con_id, d.properties.con_name, d.properties['ireland-4326_deputies'])
+		printResult(d.properties.con_id);
+
+		highlightCartoStroke(d)
+
+		highlightGeo(d.properties.con_id)
 	})
-	.on('mouseout', cleanResult)
+	.on('mouseout', d => {
+		cleanResult();
+		deleteCartoHighlight();
+		deleteGeoHighlight();
+	})
 	.on('mousemove', mousemove)
+
+	dublin.append('path')
+	.datum(topojson.feature(dublinBorderMap, dublinBorderMap.objects['dublin-border']))
+	.attr("d", path)
+	.attr('fill', 'none')
+	.style('stroke', '#333333')
+	.style('stroke-width', 4 + 'px');
+
 }
 
-function printResult(id,name, deputies){
+const printResult = (id) =>{
 
 	cleanResult()
 
@@ -138,7 +157,7 @@ function printResult(id,name, deputies){
 
 }
 
-function mousemove(){
+const mousemove = () => {
 
 
 	if(!isMobile)
@@ -177,10 +196,6 @@ function mousemove(){
 	{
 		tooltip.style('bottom',  '0%')
 	}
-
-	
-
-	
 }
 
 function cleanResult(){
@@ -191,6 +206,32 @@ function cleanResult(){
 
 }
 
+const deleteCartoHighlight = () => {
+	highlightStrokes.selectAll('path').remove()
+}
+
+const highlightCartoStroke = (d) => {
+
+	highlightStrokes.selectAll('path').remove()
+
+	highlightStrokes
+	.append('path')
+	.datum(d)
+	.attr("d", path)
+	.attr('class', 'carto-highlighted')
+}
+
+
+const highlightCarto = (ref) => {
+
+	let feature = topojson.feature(constituenciesMap, constituenciesMap.objects['ireland-constituencies-hex']).features.find(f => f.properties.con_id === ref);
+
+	highlightCartoStroke(feature)
+}
+
 window.onscroll = () => {
     cleanResult();
 }
+
+
+export { highlightCarto, deleteCartoHighlight, mousemove, printResult};

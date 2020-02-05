@@ -11,7 +11,7 @@
 .element-atom,
 .interactive-atom, body {
 
-	margin: 0px !important;
+	//margin: 0px !important;
 }
 
 .element-atom{
@@ -19,16 +19,14 @@
 	//margin-left: 240px !important;
 	//margin: 0px !important;
 	background-color: white;
-	max-width: 860px;
+	max-width: 620px;
 	background:white;
 
 }
 
-
-
 .gv-maps-wrapper{
 
-	border: 1px solid red;
+	//border: 1px solid red;
 	display: flex;
 	width: 100%;
 
@@ -38,7 +36,7 @@
 
 	@include mq(tablet){
 		flex-direction: row;
-		justify-content:space-between;
+		//justify-content:space-between;
 	}
 
 	.gv-map-wrapper{
@@ -52,11 +50,11 @@
 		min-width: 320px;
 		max-width: 320px;
 
-		border:1px solid red;
+		//border:1px solid red;
 	}
 
 	#gv-cartogram{
-		border:1px solid red;
+		//border:1px solid red;
 		display: flex;
 
 		min-width: 320px;
@@ -75,14 +73,14 @@
 
 .tooltip{
 	z-index:1000000;
- 	pointer-events: none;
- 	min-width:20%;
+	pointer-events: none;
+	min-width:20%;
  	//height: max-content;
  	padding:12px;
  	font-size: 14px;
  	line-height: 16px;
  	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
- 	background: rgba(255, 255, 255, 0.9);
+ 	background: rgba(255, 255, 255, 0.95);
  	border: 1px solid #333;
  	
 
@@ -154,11 +152,16 @@
  	}
 
  	#tooltip-color{
-		width: 8px;
-		height: 8px;
-		margin-right: 5px;
-		margin-top: 4px;
-	}
+ 		width: 8px;
+ 		height: 8px;
+ 		margin-right: 5px;
+ 		margin-top: 4px;
+ 	}
+
+ 	.tooltip-percentage{
+
+ 		text-align:right;
+ 	}
  }
 
 
@@ -179,13 +182,13 @@
  }
 
  .geo-border{
- 	stroke:$neutral-92;
+ 	stroke:$neutral-86;
  }
 
  .dublin-border{
  	fill:none;
- 	stroke:$neutral-86;
- 	stroke-width:2px;
+ 	stroke:$neutral-60;
+ 	stroke-width:1.5px;
  }
 
  .constituency-hex{
@@ -193,6 +196,48 @@
  	stroke: white;
  	stroke-width: 2px;
  }
+
+ #gv-geographical text{
+ 	font-size: 14px;
+ 	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+ 	color: #333;
+
+ }
+
+ .dublin-line{
+ 	stroke:#333;
+ 	stroke-width:1px;
+ }
+
+ .highlighted{
+ 	stroke:#333;
+ 	fill:none;
+ 	stroke-width:1.5;
+ 	stroke-linecap: "round";
+ }
+
+ .carto-highlighted{
+ 	stroke:#333;
+ 	fill:none;
+ 	stroke-width:2.5;
+ 	stroke-linecap: "round";
+ }
+
+.gv-chart-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-family: "Guardian Headline","Guardian Egyptian Web","Guardian Headline Full",Georgia,serif;
+    font-weight: normal;
+    font-weight: 700;
+}
+
+.gv-chart-subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    font-family: "Guardian Text Egyptian Web",Georgia,serif;
+    margin-bottom: 12px;
+}
+
 
 
  
