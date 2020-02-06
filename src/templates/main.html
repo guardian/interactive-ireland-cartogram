@@ -1,7 +1,14 @@
 <div class="interactive-wrapper">
 
-	<div class="gv-chart-title">Seats by county</div>
-	<div class="gv-chart-subtitle">Dáil seats in each county</div>
+	<div class="gv-chart-title"></div>
+	<div class="gv-chart-standfirst"></div>
+
+	<div class="gv-dropdown-menu">
+		<select class="gv-county-filter" data-team="Jump to a county" name="gv-county-filter"></select>
+		<svg width="24" height="10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 10">
+			<path d="M0 .7l10.5 8.4 1.1.9 1.1-.9 10.5-8.4-.5-.7-11.1 6.3-11-6.3-.6.7z" fill="#ffffff"/>
+		</svg>
+	</div>
 
 	<div class="gv-maps-wrapper">
 		<div class='gv-map-wrapper' id="gv-geographical"></div>
@@ -19,4 +26,6 @@
 
 		<div class='gv-map-wrapper' id="gv-cartogram"></div>
 	</div>
+
+	<div class="gv-source"></div>
 </div>

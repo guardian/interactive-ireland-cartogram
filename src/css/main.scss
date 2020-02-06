@@ -28,6 +28,7 @@
 .interactive-wrapper{
 	border-top: 1px solid $neutral-92;
 	border-bottom: 1px solid $neutral-92;
+	padding-bottom: 20px;
 }
 
 .gv-maps-wrapper{
@@ -123,7 +124,7 @@
  		font-weight: 800;
  		padding-bottom: 8px;
  		margin-bottom:5px;
- 		line-height: 12px;
+ 		line-height: 20px;
  		display: flex;
  		width: 100%;
  	}
@@ -170,7 +171,7 @@
  [class="IO"]{fill:#999999;  background-color: #999999;}
  [class="LAB"]{fill:#c70000;  background-color: #c70000;}
  [class="SF"]{fill:#236925;  background-color: #236925;}
- [class="GP"]{fill:#4B8878;  background-color: #4B8878;}
+ [class="Green"]{fill:#4B8878;  background-color: #4B8878;}
  [class="SD"]{fill:#ffe500;  background-color: #ffe500;}
  [class="Others"]{fill:#cccccc;  background-color: #cccccc;}
 
@@ -234,6 +235,42 @@
     font-family: "Guardian Text Egyptian Web",Georgia,serif;
     margin-bottom: 12px;
 }
+
+.gv-source {
+    //padding-top: 15px;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    float: right;
+}
+
+.gv-dropdown-menu
+	{
+		margin: 12px 0 12px;
+		select {
+			height: 40px;
+			border-radius: 40px;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			padding: 8px;
+			padding-left: 12px;
+
+			font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+			font-size: 14px;
+			font-weight: bold;
+			width: 220px;
+			padding-right: 40px;
+			color: white;
+			background-color: $neutral-7;
+
+		}
+
+		svg{
+			position: absolute;
+			margin: 16px 0 0 -37px;
+		}
+	}
 
 
 

@@ -13,8 +13,7 @@ const d3 = Object.assign({}, d3B, d3Select, geo);
 
 let results;
 
-const parties = ["FF","FG","IO","LAB","SF","GP","SD"];
-
+const parties = ["FF","FG","IO","LAB","SF","Green","SD"];
 
 let isMobile = window.matchMedia('(max-width: 400px)').matches;
 
@@ -51,16 +50,16 @@ let path = d3.geoPath()
 
 projection.fitExtent([[0, 0], [width, height]], topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']));
 
-seats.selectAll('path')
-.data(topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']).features)
-.enter()
-.append("path")
-.attr("d", path)
-.attr("id", d => 's' + d.properties.con_id + '_' + d.properties.seat_id)
-.attr('fill', '#f6f6f6')
-
-
 export default (data) => {
+
+
+	seats.selectAll('path')
+	.data(topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']).features)
+	.enter()
+	.append("path")
+	.attr("d", path)
+	.attr("id", d => 's' + d.properties.con_id + '_' + d.properties.seat_id)
+	.attr('fill', '#f6f6f6')
 	
 	results = data.sheets.results;
 
@@ -161,48 +160,40 @@ const printResult = (id) =>{
 }
 
 const mousemove = (env, id) => {
-let here = d3.mouse(d3.select('.interactive-wrapper').node());
+	
+	let here = d3.mouse(d3.select('.interactive-wrapper').node());
+	let left = here[0];
+	let top = here[1];
+	let tHeight = $('.tooltip').getBoundingClientRect().height;
+	let tWidth = $('.tooltip').getBoundingClientRect().width
 
 	if(!isMobile)
 	{
 
-		
+		let posY = (top * tHeight) / height
 
-		let left = here[0];
-		let top = here[1];
+		tooltip.style('top',  posY + 'px');
 
-		let tHeight = +tooltip.style("height").split('px')[0];
-		let tWidth = +tooltip.style("width").split('px')[0]
-
-
-		if(top > height / 1.5)
+		if(env == 'carto')
 		{
-			tooltip.style('top',  (top - tHeight - 30) + 'px')
+			tooltip.style('left', (left - tWidth ) - 20 + 'px')
 		}
 		else
 		{
-			tooltip.style('top',  top + 'px')
+			tooltip.style('left', left + 40 + 'px')
 		}
 
-
-		if(left > d3.select('.interactive-wrapper').node().clientWidth - (d3.select('#gv-cartogram').node().clientWidth / 1.5))
-		{
-			tooltip.style('left', (left - tWidth - 30) + 'px')
-		}
-		else{
-			tooltip.style('left', left + 'px')
-		}	
 	}
 	else
 	{
 
 		if(env == 'carto')
 		{
-			tooltip.style('top', here[1] - $('.tooltip').getBoundingClientRect().height - 20 + 'px')
+			tooltip.style('top', top - tHeight - 40 + 'px')
 		}
 		else
 		{
-			tooltip.style('top', here[1] + 20  + 'px')
+			tooltip.style('top', top + 20  + 'px')
 		}
 		
 	}
