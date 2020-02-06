@@ -42,6 +42,7 @@ seats.selectAll('path')
 .enter()
 .append("path")
 .attr("d", path)
+.attr("id", d => 'c' + d.properties.CON_ID)
 .attr("class", d => 'constituency ' + d.properties.MAX_CON_NA)
 .on('mouseover', d => {
 	highlightGeoStroke(d);
@@ -53,7 +54,7 @@ seats.selectAll('path')
 	deleteCartoHighlight();
 	cleanResult();
 })
-.on('mousemove', d => mousemove())
+.on('mousemove', d => mousemove('geo',d.properties.CON_ID))
 
 borders.append("path")
 .datum(topojson.feature(seatsMap, seatsMap.objects['ireland-4326']))

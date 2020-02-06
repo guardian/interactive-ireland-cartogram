@@ -9,9 +9,6 @@ import { $ } from "./util"
 
 import { highlightGeo, deleteGeoHighlight } from './geographical.js'
 
-
-console.log('LIVE-CARTOGRAM')
-
 const d3 = Object.assign({}, d3B, d3Select, geo);
 
 let results;
@@ -102,7 +99,7 @@ export default (data) => {
 		deleteCartoHighlight();
 		deleteGeoHighlight();
 	})
-	.on('mousemove', mousemove)
+	.on('mousemove', d => mousemove('carto', d.properties.con_id))
 
 	dublin.append('path')
 	.datum(topojson.feature(dublinBorderMap, dublinBorderMap.objects['dublin-border']))
@@ -163,13 +160,13 @@ const printResult = (id) =>{
 
 }
 
-const mousemove = () => {
-
+const mousemove = (env, id) => {
+let here = d3.mouse(d3.select('.interactive-wrapper').node());
 
 	if(!isMobile)
 	{
 
-		let here = d3.mouse(d3.select('.interactive-wrapper').node());
+		
 
 		let left = here[0];
 		let top = here[1];
@@ -194,15 +191,20 @@ const mousemove = () => {
 		}
 		else{
 			tooltip.style('left', left + 'px')
-		}
-
-		tooltip.style('bottom',  'unset')
-
-		
+		}	
 	}
 	else
 	{
-		tooltip.style('bottom',  '0%')
+
+		if(env == 'carto')
+		{
+			tooltip.style('top', here[1] - $('.tooltip').getBoundingClientRect().height - 20 + 'px')
+		}
+		else
+		{
+			tooltip.style('top', here[1] + 20  + 'px')
+		}
+		
 	}
 }
 
