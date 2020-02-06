@@ -1,8 +1,9 @@
 @import "mq";
 @import "fonts";
 @import "palette";
+//@import "enhancer";
 // Uncomment for embeds
-//@import "embed";
+@import "embed";
 // Uncomment for full screen (including immersive article main media)
 //@import "fullscreen";
 
@@ -19,9 +20,14 @@
 	//margin-left: 240px !important;
 	//margin: 0px !important;
 	background-color: white;
-	max-width: 620px;
+	max-width: 860px;
 	background:white;
 
+}
+
+.interactive-wrapper{
+	border-top: 1px solid $neutral-92;
+	border-bottom: 1px solid $neutral-92;
 }
 
 .gv-maps-wrapper{
@@ -34,7 +40,7 @@
 
 	flex-direction: column;
 
-	@include mq(tablet){
+	@include mq(600px){
 		flex-direction: row;
 		//justify-content:space-between;
 	}
@@ -47,7 +53,7 @@
 
 	#gv-geographical{
 		display: flex;
-		min-width: 320px;
+		min-width: 300px;
 		max-width: 320px;
 
 		//border:1px solid red;
@@ -57,7 +63,8 @@
 		//border:1px solid red;
 		display: flex;
 
-		min-width: 320px;
+		min-width: 300px;
+		max-width: 440px;
 
 		@include mq(mobile)
 		{
@@ -72,10 +79,9 @@
 }
 
 .tooltip{
-	z-index:1000000;
+	//z-index:1000000;
 	pointer-events: none;
 	min-width:20%;
- 	//height: max-content;
  	padding:12px;
  	font-size: 14px;
  	line-height: 16px;
@@ -83,7 +89,6 @@
  	background: rgba(255, 255, 255, 0.95);
  	border: 1px solid #333;
  	
-
  	color: #333333;
  	//border-top: 1px solid #333;
 
@@ -92,20 +97,18 @@
  	display: flex;
  	flex-direction: column;
 
- 	@include mq(mobile)
+ 	@include mq(200px)
  	{
- 		position: absolute;
- 		width: calc(100% - 1.8em);
- 		//bottom: 0%;
- 		//left: 0%;
+ 		position: fixed;
+ 		width: calc(100% - 1.9em);
+ 		bottom: 0%;
+ 		left: 0%;
  	}
- 	@include mq(tablet)
+ 	@include mq(600px)
  	{
- 		max-width: 200px;
+ 		max-width: 150px;
  		position: absolute;
- 		//position: relative;
- 		//float: left;
- 		//top: 0%;
+ 		bottom: unset;
  	}
 
 
@@ -120,9 +123,9 @@
  		font-weight: bold;
  		color: #000;
  		font-weight: 800;
- 		padding-bottom: 15px;
+ 		padding-bottom: 8px;
  		margin-bottom:5px;
- 		line-height: 24px;
+ 		line-height: 12px;
  		display: flex;
  		width: 100%;
  	}
@@ -164,18 +167,14 @@
  	}
  }
 
-
-
-
  [class="FF"]{fill:#3db540; background-color: #3db540;}
  [class="FG"]{fill:#00b2ff;  background-color: #00b2ff;}
  [class="IO"]{fill:#999999;  background-color: #999999;}
  [class="LAB"]{fill:#c70000;  background-color: #c70000;}
  [class="SF"]{fill:#236925;  background-color: #236925;}
  [class="GP"]{fill:#4B8878;  background-color: #4B8878;}
- [class="Solidarity"]{fill:#ffe500;  background-color: #ffe500;}
+ [class="SD"]{fill:#ffe500;  background-color: #ffe500;}
  [class="Others"]{fill:#cccccc;  background-color: #cccccc;}
-
 
  .constituency{
  	fill:$neutral-96;

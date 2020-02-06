@@ -9,11 +9,14 @@ import { $ } from "./util"
 
 import { highlightGeo, deleteGeoHighlight } from './geographical.js'
 
+
+console.log('LIVE-CARTOGRAM')
+
 const d3 = Object.assign({}, d3B, d3Select, geo);
 
 let results;
 
-const parties = ["FF","FG","IO","LAB","SF","GP","Solidarity"];
+const parties = ["FF","FG","IO","LAB","SF","GP","SD"];
 
 
 let isMobile = window.matchMedia('(max-width: 400px)').matches;
@@ -42,6 +45,9 @@ let highlightStrokes = svg.append('g');
 let tooltip = d3.select(".tooltip")
 
 let projection = d3.geoPatterson()
+
+
+//const projection = d3.geoIdentity().reflectY(true);
 
 let path = d3.geoPath()
 .projection(projection)
@@ -172,7 +178,7 @@ const mousemove = () => {
 		let tWidth = +tooltip.style("width").split('px')[0]
 
 
-		if(top > height / 2)
+		if(top > height / 1.5)
 		{
 			tooltip.style('top',  (top - tHeight - 30) + 'px')
 		}
@@ -182,13 +188,15 @@ const mousemove = () => {
 		}
 
 
-		if(left > d3.select('.interactive-wrapper').node().clientWidth - (d3.select('#gv-cartogram').node().clientWidth / 2))
+		if(left > d3.select('.interactive-wrapper').node().clientWidth - (d3.select('#gv-cartogram').node().clientWidth / 1.5))
 		{
 			tooltip.style('left', (left - tWidth - 30) + 'px')
 		}
 		else{
 			tooltip.style('left', left + 'px')
 		}
+
+		tooltip.style('bottom',  'unset')
 
 		
 	}
@@ -234,4 +242,4 @@ window.onscroll = () => {
 }
 
 
-export { highlightCarto, deleteCartoHighlight, mousemove, printResult};
+export { highlightCarto, deleteCartoHighlight, mousemove, printResult, cleanResult};

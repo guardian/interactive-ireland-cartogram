@@ -3,7 +3,7 @@ import * as topojson from 'topojson'
 import * as geo from 'd3-geo-projection'
 import seatsMap from '../assets/ireland-4326.json'
 import { $ } from "./util"
-import { highlightCarto, deleteCartoHighlight, mousemove, printResult } from './cartogram.js'
+import { highlightCarto, deleteCartoHighlight, mousemove, printResult, cleanResult } from './cartogram.js'
 
 const d3 = Object.assign({}, d3B, topojson, geo);
 
@@ -51,6 +51,7 @@ seats.selectAll('path')
 .on('mouseout', d => {
 	deleteGeoHighlight()
 	deleteCartoHighlight();
+	cleanResult();
 })
 .on('mousemove', d => mousemove())
 
