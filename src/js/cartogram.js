@@ -6,6 +6,7 @@ import seatsMap from '../assets/ireland-hex-4326.json'
 import constituenciesMap from '../assets/ireland-constituencies-hex.json'
 import dublinBorderMap from '../assets/dublin-border.json'
 import { $ } from "./util"
+import { $$ } from "./util"
 
 import { highlightGeo, deleteGeoHighlight } from './geographical.js'
 
@@ -160,43 +161,55 @@ const printResult = (id) =>{
 }
 
 const mousemove = (env, id) => {
-	
-	let here = d3.mouse(d3.select('.interactive-wrapper').node());
-	let left = here[0];
-	let top = here[1];
-	let tHeight = $('.tooltip').getBoundingClientRect().height;
-	let tWidth = $('.tooltip').getBoundingClientRect().width
 
-	if(!isMobile)
+
+	if(env != 'dropdown')
 	{
+		let here = d3.mouse(d3.select('.interactive-wrapper').node());
+		let left = here[0];
+		let top = here[1];
+		let tHeight = $('.tooltip').getBoundingClientRect().height;
+		let tWidth = $('.tooltip').getBoundingClientRect().width
 
-		let posY = (top * tHeight) / height
-
-		tooltip.style('top',  posY + 'px');
-
-		if(env == 'carto')
+		if(!isMobile)
 		{
-			tooltip.style('left', (left - tWidth ) - 20 + 'px')
+
+			let posY = (top * tHeight) / height
+
+			tooltip.style('top',  posY + 'px');
+
+			if(env == 'carto')
+			{
+				tooltip.style('left', (left - tWidth ) - 20 + 'px')
+			}
+			else
+			{
+				tooltip.style('left', left + 40 + 'px')
+			}
+
 		}
 		else
 		{
-			tooltip.style('left', left + 40 + 'px')
-		}
 
+			if(env == 'carto')
+			{
+				tooltip.style('top', top - tHeight - 40 + 'px')
+			}
+			else
+			{
+				tooltip.style('top', top + 20  + 'px')
+			}
+			
+		}
 	}
 	else
 	{
 
-		if(env == 'carto')
-		{
-			tooltip.style('top', top - tHeight - 40 + 'px')
-		}
-		else
-		{
-			tooltip.style('top', top + 20  + 'px')
-		}
-		
+		tooltip.style('top', $$('.gv-dropdown-menu').clientHeight)
+		tooltip.style('left', 0 + 'px')
 	}
+
+	
 }
 
 function cleanResult(){

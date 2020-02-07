@@ -5,7 +5,7 @@ import loadJson from '../components/load-json'
 import { $ } from "./util"
 import { $$ } from "./util"
 import { highlightGeo } from './geographical.js'
-import { highlightCarto, printResult } from './cartogram.js'
+import { highlightCarto, printResult, mousemove } from './cartogram.js'
 
 loadJson('https://interactive.guim.co.uk/docsdata-test/18lIPHjQVSoLRqRstoPkh60MyibOBpbs8M0LyqKPgWXI.json')
 .then( fileRaw => {
@@ -41,6 +41,7 @@ console.log()
 		printResult(el.value)
 		highlightCarto(el.value)
 		highlightGeo(el.value)
+		mousemove('dropdown', el.value)
 
 	}
 
