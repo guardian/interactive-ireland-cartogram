@@ -2,8 +2,10 @@ import * as d3B from 'd3'
 import * as d3Select from 'd3-selection'
 import * as topojson from 'topojson'
 import * as geo from 'd3-geo-projection'
-import seatsMap from '../assets/ireland-hex-4326.json'
-import constituenciesMap from '../assets/ireland-constituencies-hex.json'
+//import seatsMap from '../assets/ireland-hex-4326.json'
+import seatsMap from '../assets/ireland-2017-seats-hex.json'
+//import constituenciesMap from '../assets/ireland-constituencies-hex.json'
+import constituenciesMap from '../assets/ireland-2017-constituencies-hex.json'
 import dublinBorderMap from '../assets/dublin-border.json'
 import { $ } from "./util"
 import { $$ } from "./util"
@@ -49,13 +51,13 @@ let projection = d3.geoPatterson()
 let path = d3.geoPath()
 .projection(projection)
 
-projection.fitExtent([[0, 0], [width, height]], topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']));
+projection.fitExtent([[0, 0], [width, height]], topojson.feature(seatsMap, seatsMap.objects['ireland-2017-seats-hex']));
 
 export default (data) => {
 
 
 	seats.selectAll('path')
-	.data(topojson.feature(seatsMap, seatsMap.objects['ireland-hex-4326']).features)
+	.data(topojson.feature(seatsMap, seatsMap.objects['ireland-2017-seats-hex']).features)
 	.enter()
 	.append("path")
 	.attr("d", path)
@@ -63,6 +65,8 @@ export default (data) => {
 	.attr('fill', '#f6f6f6')
 	
 	results = data.sheets.results;
+
+	console.log(results)
 
 	results.map(constituency => {
 
@@ -81,13 +85,15 @@ export default (data) => {
 	})
 
 	constituencies.selectAll("path")
-	.data(topojson.feature(constituenciesMap, constituenciesMap.objects['ireland-constituencies-hex']).features)
+	.data(topojson.feature(constituenciesMap, constituenciesMap.objects['ireland-2017-constituencies-hex']).features)
 	.enter()
 	.append('path')
 	.attr('id', d => 'c' + d.properties.con_id)
 	.attr('class', 'constituency-hex')
 	.attr("d", path)
 	.on('mouseover', d => {
+
+		//console.log(d)
 		printResult(d.properties.con_id);
 
 		highlightCartoStroke(d)
@@ -238,7 +244,11 @@ const highlightCartoStroke = (d) => {
 
 const highlightCarto = (ref) => {
 
-	let feature = topojson.feature(constituenciesMap, constituenciesMap.objects['ireland-constituencies-hex']).features.find(f => f.properties.con_id === ref);
+	console.log(ref)
+
+	let feature = topojson.feature(constituenciesMap, constituenciesMap.objects['ireland-2017-constituencies-hex']).features.find(f => f.properties.con_id === ref);
+
+	console.log(feature)
 
 	highlightCartoStroke(feature)
 }

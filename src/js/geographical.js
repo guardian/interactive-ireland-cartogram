@@ -1,7 +1,8 @@
 import * as d3B from 'd3'
 import * as topojson from 'topojson'
 import * as geo from 'd3-geo-projection'
-import seatsMap from '../assets/ireland-4326.json'
+//import seatsMap from '../assets/ireland-4326.json'
+import seatsMap from '../assets/Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries.json'
 import { $ } from "./util"
 import { highlightCarto, deleteCartoHighlight, mousemove, printResult, cleanResult } from './cartogram.js'
 
@@ -31,36 +32,36 @@ let projection = d3.geoMercator()
 let path = d3.geoPath()
 .projection(projection)
 
-projection.fitExtent([[0, 0], [width, height]], topojson.feature(seatsMap, seatsMap.objects['ireland-4326']));
+projection.fitExtent([[0, 0], [width, height]], topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries));
 
-const dublinGeo =  topojson.merge(seatsMap, seatsMap.objects['ireland-4326'].geometries.filter(f => f.properties.MAX_CON_NA.indexOf('Dublin') > -1 || f.properties.MAX_CON_NA === 'Dún Laoghaire (4)'))
+const dublinGeo =  topojson.merge(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries.geometries.filter(f => f.properties.ENGLISH_NA.indexOf('Dublin') > -1 || f.properties.ENGLISH_NA === 'Dún Laoghaire (4)'))
 
-const dublinFeatures = topojson.feature(seatsMap, seatsMap.objects['ireland-4326']).features.filter(f => f.properties.MAX_CON_NA.indexOf('Dublin') > -1 || f.properties.MAX_CON_NA === 'Dún Laoghaire (4)')
+const dublinFeatures = topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries).features.filter(f => f.properties.ENGLISH_NA.indexOf('Dublin') > -1 || f.properties.ENGLISH_NA === 'Dún Laoghaire (4)')
 
 
 export default () => {
 	seats.selectAll('path')
-	.data(topojson.feature(seatsMap, seatsMap.objects['ireland-4326']).features)
+	.data(topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries).features)
 	.enter()
 	.append("path")
 	.attr("d", path)
-	.attr("id", d => 'c' + d.properties.CON_ID)
-	.attr("class", d => 'constituency ' + d.properties.MAX_CON_NA)
+	.attr("id", d => d.properties.BDY_ID + 'C')
+	.attr("class", d => 'constituency ' + d.properties.ENGLISH_NA)
 	.on('mouseover', d => {
 		highlightGeoStroke(d);
-		highlightCarto(d.properties.CON_ID);
-		printResult(d.properties.CON_ID,name);
+		highlightCarto(d.properties.BDY_ID  + 'C');
+		printResult(d.properties.BDY_ID  + 'C',name);
 	})
 	.on('mouseout', d => {
 		deleteGeoHighlight()
 		deleteCartoHighlight();
 		cleanResult();
 	})
-	.on('mousemove', d => mousemove('geo',d.properties.CON_ID))
+	.on('mousemove', d => mousemove('geo',d.properties.BDY_ID  + 'C'  + 'C'))
 
 	borders.append("path")
-	.datum(topojson.feature(seatsMap, seatsMap.objects['ireland-4326']))
-	.attr('d', path(topojson.mesh(seatsMap, seatsMap.objects['ireland-4326'], (a, b) => a !== b)))
+	.datum(topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries))
+	.attr('d', path(topojson.mesh(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries, (a, b) => a !== b || a === b)))
 	.style('fill', 'none')
 	.attr('class', 'geo-border')
 	.style('pointer-events', 'none')
@@ -73,19 +74,19 @@ export default () => {
 
 
 	let texts = svg.append('g').selectAll("hello")
-	.data(topojson.feature(seatsMap, seatsMap.objects['ireland-4326']).features)
+	.data(topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries).features)
 	.enter()
-	.filter(d => d.properties.MAX_CON_NA.indexOf('Dublin') < 0 && d.properties.MAX_CON_NA.indexOf('Dún Laoghaire') < 0)
+	.filter(d => d.properties.ENGLISH_NA.indexOf('Dublin') < 0 && d.properties.ENGLISH_NA.indexOf('Dún Laoghaire') < 0)
 	.append('text')
 	.attr('x',d=> path.centroid(d)[0])
 	.attr('y',d=>path.centroid(d)[1])
-	.text(d => d.properties.deputies)
+	.text(d => d.properties.ENGLISH_NA.split('(')[1].substr(0,1))
 	.style('pointer-events', 'none')
 
 
-	let dublinSeats = topojson.feature(seatsMap, seatsMap.objects['ireland-4326']).features
-	.filter(d => d.properties.MAX_CON_NA.indexOf('Dublin') > -1 || d.properties.MAX_CON_NA.indexOf('Dún Laoghaire') > -1)
-	.map( s => s.properties.deputies)
+	let dublinSeats = topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries).features
+	.filter(d => d.properties.ENGLISH_NA.indexOf('Dublin') > -1 || d.properties.ENGLISH_NA.indexOf('Dún Laoghaire') > -1)
+	.map( s => +s.properties.ENGLISH_NA.split('(')[1].substr(0,1))
 	.reduce((a, b) => a + b, 0)
 
 	let dublinText = svg.append('g')
@@ -158,7 +159,10 @@ function lngLatToArc(d, sourceName, targetName, bend){
 
 
 	const highlightGeo = (ref) => {
-		let feature = topojson.feature(seatsMap, seatsMap.objects['ireland-4326']).features.find(f => f.properties.CON_ID === ref);
+
+		console.log('ref: ', ref)
+		let feature = topojson.feature(seatsMap, seatsMap.objects.Constituency_Boundaries_Ungeneralised_2017__OSi_National_Electoral_Boundaries).features.find(f =>f.properties.BDY_ID  + 'C' === ref);
+		console.log('feature: ', feature)
 
 		highlightGeoStroke(feature)
 	}

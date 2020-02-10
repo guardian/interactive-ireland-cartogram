@@ -10,13 +10,9 @@ import { highlightCarto, printResult, mousemove } from './cartogram.js'
 loadJson('https://interactive.guim.co.uk/docsdata-test/18lIPHjQVSoLRqRstoPkh60MyibOBpbs8M0LyqKPgWXI.json')
 .then( fileRaw => {
 
-console.log()
-
 	$('.gv-chart-title').innerHTML = fileRaw.sheets.furniture.find( f => f.div === 'heading').text
 	$('.gv-chart-standfirst').innerHTML = fileRaw.sheets.furniture.find( f => f.div === 'standfirst').text
 	$('.gv-source').innerHTML = fileRaw.sheets.furniture.find( f => f.div === 'source').text
-
-	
 
 	let gvOption =`<option selected="selected">Jump to a county</option>`
 
